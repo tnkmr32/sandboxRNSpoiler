@@ -196,14 +196,15 @@ const config2 = {
   },
 };
 
+// サインイン、サインアップ
 // 以下のconfigで瀧さんのAzureADB2Cに接続できた
 const baseUrl2 = 'https://appauth22222.b2clogin.com/appauth22222.onmicrosoft.com/oauth2/v2.0/';
-const config = {
+const config3 = {
   clientId,
   redirectUrl: 'https://jet.ms/',
   serviceConfiguration: {
     authorizationEndpoint: `${baseUrl2}/authorize`,
-    tokenEndpoint: `${baseUrl2}/token?p=${policy}`,
+    tokenEndpoint: `${baseUrl2}/token?p=${policy}`, //B2C_1_signup_signin
   },
   scopes: ['openid'],
   additionalParameters: {
@@ -215,6 +216,24 @@ const config = {
 // https://appauth22222.b2clogin.com/appauth22222.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_signup_signin&client_id=d6c76e27-0b18-4d0d-92aa-36dcd3e835f8&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjet.ms%2F&scope=openid&response_type=code&prompt=login
 // https://appauth22222.b2clogin.com/appauth22222.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_signup_signin&client_id=d6c76e27-0b18-4d0d-92aa-36dcd3e835f8&nonce=defaultNonce&redirect_uri=https%et.ms/&scope=openid&response_type=code&prompt=login
 // %3A%2F%2F
+
+// パスワード再設定
+// https://appauth22222.b2clogin.com/appauth22222.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_forget&client_id=d6c76e27-0b18-4d0d-92aa-36dcd3e835f8&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjet.ms%2F&scope=openid&response_type=code&prompt=login
+const config = {
+  clientId,
+  redirectUrl: 'https://jet.ms/',
+  serviceConfiguration: {
+    authorizationEndpoint: `${baseUrl2}/authorize`,
+    tokenEndpoint: `${baseUrl2}/token?p=B2C_1_forget`,
+  },
+  scopes: ['openid'],
+  additionalParameters: {
+    p: 'B2C_1_forget',
+    prompt: 'login',
+    nonce: 'defaultNonce',
+  },
+};
+
 // // Log in to get an authentication token
 // const authState = await authorize(config);
 

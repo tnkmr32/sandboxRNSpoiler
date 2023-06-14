@@ -3,7 +3,7 @@ https://github.com/expo/expo/issues/22210
 
 
 react-native-app-authをインストールしたらprebuild後にandroid/app/build.gradleに設定を追記する。しないとビルドが失敗する。
-
+場所はandroid.defaultConfigの中
         android {
             manifestPlaceholders = [
                 appAuthRedirectScheme: 'io.identityserver.demo'
